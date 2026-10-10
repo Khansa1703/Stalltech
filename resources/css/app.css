@@ -1,0 +1,293 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+    --canvas-bg: #ece9e2;
+    --card-bg: #ffffff;
+    --sage-dark: #2c4238;
+    --sage-primary: #3d5c4e;
+    --sage-accent: #456353;
+    --sage-hover: #324c40;
+    --sage-light: #eaf2ec;
+    --sage-border: #dbe5df;
+    --ink-dark: #191e1b;
+    --ink-muted: #85918a;
+    font-synthesis: none;
+}
+
+body {
+    min-width: 320px;
+    background-color: #ece9e2;
+    color: #191e1b;
+    font-family: var(--font-sans);
+}
+
+/* Card & Surface Tokens */
+.theme-canvas {
+    background-color: #ece9e2;
+}
+
+.theme-card, .card {
+    border: 1px solid rgba(226, 221, 213, 0.65);
+    border-radius: 1.75rem;
+    background: #ffffff;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px -2px rgba(60, 75, 65, 0.05), 0 2px 6px -1px rgba(60, 75, 65, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card {
+    overflow: hidden;
+    border: 1px solid rgba(226, 221, 213, 0.65);
+    border-radius: 1.75rem;
+    background: #ffffff;
+    box-shadow: 0 4px 20px -2px rgba(60, 75, 65, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px -4px rgba(60, 75, 65, 0.12);
+}
+
+.product-art {
+    display: flex;
+    aspect-ratio: 1.35;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #e3ede7 0%, #a7c1b4 100%);
+    padding: 1.25rem;
+    color: #191e1b;
+}
+
+.product-art span {
+    align-self: flex-start;
+    border-radius: 9999px;
+    background: rgba(25, 30, 27, 0.75);
+    padding: 0.4rem 0.75rem;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.product-art strong {
+    align-self: flex-end;
+    font-size: 5rem;
+    line-height: 0.75;
+    font-weight: 900;
+    color: rgba(61, 92, 78, 0.25);
+    letter-spacing: -0.05em;
+}
+
+/* Button Tokens */
+.button, .button-sage {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 9999px;
+    background: #456353;
+    padding: 0.72rem 1.35rem;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    border: none;
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 8px rgba(69, 99, 83, 0.2);
+}
+
+.button:hover, .button-sage:hover {
+    background: #364f42;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(69, 99, 83, 0.3);
+}
+
+.button:active, .button-sage:active {
+    transform: translateY(0);
+}
+
+.button.secondary, .button-secondary {
+    background: #ffffff;
+    color: #191e1b;
+    border: 1px solid #ded8ce;
+    box-shadow: none;
+}
+
+.button.secondary:hover, .button-secondary:hover {
+    background: #f7f5f0;
+    border-color: #c9c2b6;
+    color: #191e1b;
+}
+
+.button.small {
+    padding: 0.48rem 0.85rem;
+    font-size: 0.75rem;
+}
+
+.button.dark-pill {
+    background: #191e1b;
+    color: #ffffff;
+}
+
+.button.dark-pill:hover {
+    background: #2a332e;
+}
+
+/* Form Controls */
+label {
+    display: grid;
+    gap: 0.45rem;
+    color: #49544e;
+    font-size: 0.825rem;
+    font-weight: 700;
+}
+
+input, select, textarea {
+    width: 100%;
+    border: 1px solid #ded8ce;
+    border-radius: 0.875rem;
+    background: #ffffff;
+    padding: 0.7rem 0.95rem;
+    color: #191e1b;
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #456353;
+    box-shadow: 0 0 0 3px rgba(69, 99, 83, 0.16);
+}
+
+input[type=file] {
+    padding: 0.55rem;
+}
+
+/* Status & Badges */
+.status {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    padding: 0.32rem 0.7rem;
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.status-pending { background: #fef5e7; color: #a16207; }
+.status-approve, .status-finish { background: #eaf5ee; color: #236540; }
+.status-process { background: #e6f0fa; color: #1e528d; }
+.status-delivery { background: #f3ecfb; color: #6a289f; }
+.status-cancel { background: #fdf0ed; color: #b94838; }
+
+.badge-trend-up {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: #eaf5ee;
+    color: #236540;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+}
+
+.badge-trend-down {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: #fdf0ed;
+    color: #b94838;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+th {
+    background: #faf8f5;
+    color: #7b8780;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+th, td {
+    border-bottom: 1px solid #ebe6de;
+    padding: 0.95rem 1.25rem;
+    white-space: nowrap;
+}
+
+tr:last-child td {
+    border-bottom: 0;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+/* Eyebrow Label */
+.eyebrow {
+    color: #456353;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+/* Metric Boxes */
+.metric {
+    border-radius: 1.5rem;
+    background: #ffffff;
+    border: 1px solid #ded8ce;
+    padding: 1.35rem;
+    color: #191e1b;
+    box-shadow: 0 4px 18px rgba(60, 75, 65, 0.04);
+}
+
+.metric span, .metric small {
+    display: block;
+    color: #75837c;
+    font-size: 0.76rem;
+}
+
+.metric strong {
+    display: block;
+    margin: 0.6rem 0 0.3rem;
+    font-size: 1.85rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #191e1b;
+}
+
+/* Theme Utilities */
+.bg-sage-dark { background-color: #2c4238; }
+.bg-sage-primary { background-color: #3d5c4e; }
+.bg-sage-accent { background-color: #456353; }
+.bg-sage-light { background-color: #eaf2ec; }
+.text-sage-accent { color: #456353; }
+.text-sage-primary { color: #3d5c4e; }
+.border-sage-accent { border-color: #456353; }
